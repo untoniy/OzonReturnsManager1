@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36511.14 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OzonReturnsManager1", "OzonReturnsManager1.csproj", "{139A1163-B351-409F-8CC6-F08ED2957B4C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{139A1163-B351-409F-8CC6-F08ED2957B4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{139A1163-B351-409F-8CC6-F08ED2957B4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{139A1163-B351-409F-8CC6-F08ED2957B4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{139A1163-B351-409F-8CC6-F08ED2957B4C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2056A3EE-74A0-477B-BD6F-F23C9A01B8D7}
+	EndGlobalSection
+EndGlobal
