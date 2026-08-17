@@ -46,6 +46,12 @@ namespace OzonReturnsManager1
         {
             _bindingSource = new BindingSource();
             dgvReturns.DataSource = _bindingSource;
+
+            // Скрываем колонки Sku и Quantity
+            if (dgvReturns.Columns.Contains("Sku"))
+                dgvReturns.Columns["Sku"].Visible = false;
+            if (dgvReturns.Columns.Contains("Quantity"))
+                dgvReturns.Columns["Quantity"].Visible = false;
         }
 
         private async void btnRequest_Click(object sender, EventArgs e)
