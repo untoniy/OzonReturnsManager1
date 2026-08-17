@@ -61,7 +61,9 @@
             this.colDate,
             this.colType,
             this.colShopName,
-            this.colOfferId});
+            this.colOfferId,
+            this.colBrand,
+            this.colArticle});
             this.dgvReturns.Location = new System.Drawing.Point(12, 80);
             this.dgvReturns.Name = "dgvReturns";
             this.dgvReturns.ReadOnly = true;
@@ -187,6 +189,20 @@
             this.colOfferId.Name = "colOfferId";
             this.colOfferId.ReadOnly = true;
             // 
+            // colBrand
+            // 
+            this.colBrand.DataPropertyName = "Brand";
+            this.colBrand.HeaderText = "Бренд";
+            this.colBrand.Name = "colBrand";
+            this.colBrand.ReadOnly = true;
+            // 
+            // colArticle
+            // 
+            this.colArticle.DataPropertyName = "Article";
+            this.colArticle.HeaderText = "Артикул";
+            this.colArticle.Name = "colArticle";
+            this.colArticle.ReadOnly = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -227,6 +243,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colType;
         private System.Windows.Forms.DataGridViewTextBoxColumn colShopName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colOfferId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colBrand;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colArticle;
     }
 }
 
