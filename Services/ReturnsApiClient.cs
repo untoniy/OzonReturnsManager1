@@ -39,7 +39,8 @@ namespace OzonReturnsManager1.Services
                 changeMomentFrom = dateFrom.ToString("yyyy-MM-dd"),
                 changeMomentTo = dateTo.ToString("yyyy-MM-dd"),
                 org_type = orgType.HasValue ? orgType.Value.ToString() : null,
-                our_status = ourStatus
+                our_status = ourStatus,
+                ozon_sys_name = "ReceivedBySeller"
             };
 
             var json = JsonConvert.SerializeObject(requestBody);
