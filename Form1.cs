@@ -66,12 +66,8 @@ namespace OzonReturnsManager1
 
                 token = _tokenService.GetToken();
                 
-                // Показываем отладочную информацию о токене
-                MessageBox.Show(
-                    $"Токен загружен.\nДлина: {token.Length} символов\nНачало: {token.Substring(0, Math.Min(10, token.Length))}...",
-                    "Отладка токена",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                // Проверяем, не содержит ли токен лишних символов (пробелы, переносы строк)
+                token = token?.Trim();
                 
                 _apiClient = new ReturnsApiClient(token);
 

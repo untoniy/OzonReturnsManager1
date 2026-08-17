@@ -18,12 +18,8 @@ namespace OzonReturnsManager1.Services
         {
             _token = token;
             _httpClient = new HttpClient();
-            // Исправление для .NET Framework 4.8 - используем TryAddWithoutValidation для Authorization
-            // Добавляем префикс "Bearer " если он еще не добавлен
-            var authHeader = _token.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase) 
-                ? _token 
-                : $"Bearer {_token}";
-            _httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", authHeader);
+            // Токен передается как есть, без префикса "Bearer "
+            _httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", token);
             // Content-Type добавляется автоматически при создании StringContent
         }
 
