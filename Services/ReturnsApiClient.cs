@@ -18,8 +18,8 @@ namespace OzonReturnsManager1.Services
         {
             _token = token;
             _httpClient = new HttpClient();
-            // Исправление для .NET Framework 4.8 - используем TryAddWithoutValidation для Authorization
-            _httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", _token);
+            // Токен передается как есть, без префикса "Bearer "
+            _httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", token);
             // Content-Type добавляется автоматически при создании StringContent
         }
 
@@ -46,10 +46,16 @@ namespace OzonReturnsManager1.Services
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
             var response = await _httpClient.PostAsync(requestUrl, content);
-            response.EnsureSuccessStatusCode();
+            
+            // Получаем подробную информацию об ошибке
+            var responseContent = await response.Content.ReadAsStringAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new HttpRequestException(
+                    $"HTTP {(int)response.StatusCode} {response.ReasonPhrase} - {responseContent}");
+            }
 
-            var responseJson = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<GetReturnsResponse>(responseJson);
+            var result = JsonConvert.DeserializeObject<GetReturnsResponse>(responseContent);
 
             if (result?.Status != "ok" || result.Items == null)
             {
@@ -105,10 +111,16 @@ namespace OzonReturnsManager1.Services
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
             var response = await _httpClient.PostAsync(requestUrl, content);
-            response.EnsureSuccessStatusCode();
+            
+            // Получаем подробную информацию об ошибке
+            var responseContent = await response.Content.ReadAsStringAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new HttpRequestException(
+                    $"HTTP {(int)response.StatusCode} {response.ReasonPhrase} - {responseContent}");
+            }
 
-            var responseJson = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<GetStockRemovalsResponse>(responseJson);
+            var result = JsonConvert.DeserializeObject<GetStockRemovalsResponse>(responseContent);
 
             if (result?.Status != "ok" || result.Data == null)
             {
