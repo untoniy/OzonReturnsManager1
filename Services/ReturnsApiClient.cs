@@ -175,7 +175,7 @@ namespace OzonReturnsManager1.Services
         public string OfferId { get; set; }
 
         [JsonProperty("sku")]
-        public int Sku { get; set; }
+        public long Sku { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
