@@ -9,7 +9,9 @@
 *.pyc
 *.class
 *.a
-
+.vs/
+.bin/
+.obj/
 # Dependencies
 node_modules/
 venv/
