@@ -1,5 +1,54 @@
-.vs
-.vs/
+```
+# Compiled and build artifacts
+*.exe
+*.dll
+*.pdb
+*.obj
+*.o
+*.out
+*.class
+*.pyc
+__pycache__/
+
+# Dependencies
+node_modules/
+venv/
+.venv/
+.env
+.env.local
+*.env.*
+
+# Build directories
+dist/
+build/
+target/
 bin/
 obj/
-tokens.txt
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+*.swo
+
+# Editors
+.vscode/
+.idea/
+*.userprefs
+*.suo
+*.user
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Coverage reports
+coverage/
+htmlcov/
+.coverage
+
+# Cache directories
+.mypy_cache/
+.pytest_cache/
+.gradle/
+```

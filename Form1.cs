@@ -50,6 +50,7 @@ namespace OzonReturnsManager1
 
         private async void btnRequest_Click(object sender, EventArgs e)
         {
+            string token = null;
             try
             {
                 // Проверяем наличие токена
@@ -63,7 +64,15 @@ namespace OzonReturnsManager1
                     return;
                 }
 
-                var token = _tokenService.GetToken();
+                token = _tokenService.GetToken();
+                
+                // Показываем отладочную информацию о токене
+                MessageBox.Show(
+                    $"Токен загружен.\nДлина: {token.Length} символов\nНачало: {token.Substring(0, Math.Min(10, token.Length))}...",
+                    "Отладка токена",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                
                 _apiClient = new ReturnsApiClient(token);
 
                 // Получаем параметры фильтрации
@@ -113,8 +122,26 @@ namespace OzonReturnsManager1
             }
             catch (Exception ex)
             {
+                var errorMessage = $"Ошибка при загрузке данных: {ex.Message}";
+                
+                // Если это HTTP ошибка, добавляем детали
+                if (ex is System.Net.Http.HttpRequestException httpEx)
+                {
+                    errorMessage += $"\n\nДетали HTTP ошибки: {httpEx.Message}";
+                    
+                    // Проверяем, не связана ли ошибка с токеном
+                    if (ex.Message.Contains("403") || ex.Message.Contains("Forbidden"))
+                    {
+                        errorMessage += "\n\nВозможные причины:\n" +
+                                       "1. Неверный токен авторизации\n" +
+                                       "2. Токен устарел или отозван\n" +
+                                       "3. Токен требует префикса 'Bearer '\n\n" +
+                                       $"Текущий токен (первые 20 символов): {(token != null ? token.Substring(0, Math.Min(20, token.Length)) : "не загружен")}...";
+                    }
+                }
+                
                 MessageBox.Show(
-                    $"Ошибка при загрузке данных: {ex.Message}",
+                    errorMessage,
                     "Ошибка",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
