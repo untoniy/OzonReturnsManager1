@@ -44,6 +44,10 @@
             this.colType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colShopName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colOfferId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colArticle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSku = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReturns)).BeginInit();
             this.SuspendLayout();
             // 
