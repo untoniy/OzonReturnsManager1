@@ -4,20 +4,24 @@
 *.exe
 *.dll
 *.pdb
-*.userprefs
+*.user
+*.aps
+*.ilk
+*.iobj
+*.ipdb
+*.tlog
+*.metagen
+*.wrn
+*.xml
 *.cache
 *.log
-*.tmp
 
 # Dependencies
 packages/
-lib/
 bin/
 obj/
-
-# User-specific files
-*.user
-*.userosscache
-*.suo
+Debug/
+Release/
 .vs/
+.suo
 ```
