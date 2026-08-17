@@ -18,8 +18,9 @@ namespace OzonReturnsManager1.Services
         {
             _token = token;
             _httpClient = new HttpClient();
-            _httpClient.DefaultRequestHeaders.Add("Authorization", _token);
-            _httpClient.DefaultRequestHeaders.Add("Content-Type", "application/json");
+            // Исправление для .NET Framework 4.8 - используем TryAddWithoutValidation для Authorization
+            _httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", _token);
+            // Content-Type добавляется автоматически при создании StringContent
         }
 
         /// <summary>
