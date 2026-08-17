@@ -28,5 +28,43 @@ namespace OzonReturnsManager1.Models
         public string BoxId { get; set; }
         public string BoxState { get; set; }
         public string ReturnState { get; set; }
+
+        // Вычисляемые свойства для бренда и артикула
+        public string Brand
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(OfferId))
+                    return string.Empty;
+
+                var parts = OfferId.Split('_');
+                if (parts.Length == 1)
+                    return string.Empty;
+                else if (parts.Length == 2)
+                    return parts[0];
+                else if (parts.Length >= 3)
+                    return parts[1];
+
+                return string.Empty;
+            }
+        }
+
+        public string Article
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(OfferId))
+                    return string.Empty;
+
+                // Артикул между последним подчеркиванием и слэшем
+                var lastUnderscoreIndex = OfferId.LastIndexOf('_');
+                var slashIndex = OfferId.IndexOf('/');
+
+                if (lastUnderscoreIndex == -1 || slashIndex == -1 || lastUnderscoreIndex >= slashIndex)
+                    return string.Empty;
+
+                return OfferId.Substring(lastUnderscoreIndex + 1, slashIndex - lastUnderscoreIndex - 1);
+            }
+        }
     }
 }

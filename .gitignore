@@ -1,1 +1,25 @@
-Nothing should be ignored based on the provided file changes. The only modified file is a source code file (.cs), which should not be added to .gitignore.
+```
+# Build artifacts
+*.obj
+*.exe
+*.dll
+*.pdb
+*.userprefs
+*.cache
+*.log
+
+# Dependencies
+packages/
+bin/
+obj/
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Editors
+.vs/
+.vshost.exe
+.user
+```
