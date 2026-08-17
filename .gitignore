@@ -7,19 +7,17 @@
 *.userprefs
 *.cache
 *.log
+*.tmp
 
 # Dependencies
 packages/
+lib/
 bin/
 obj/
 
-# Environment
-.env
-.env.local
-*.env.*
-
-# Editors
+# User-specific files
+*.user
+*.userosscache
+*.suo
 .vs/
-.vshost.exe
-.user
 ```
