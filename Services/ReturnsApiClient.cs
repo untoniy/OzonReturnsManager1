@@ -38,8 +38,9 @@ namespace OzonReturnsManager1.Services
             {
                 changeMomentFrom = dateFrom.ToString("yyyy-MM-dd"),
                 changeMomentTo = dateTo.ToString("yyyy-MM-dd"),
-                org_type = orgType.HasValue ? orgType.Value.ToString() : null,
-                our_status = ourStatus
+                org_type = orgType,
+                our_status = ourStatus,
+                ozon_sys_name = "ReceivedBySeller"
             };
 
             var json = JsonConvert.SerializeObject(requestBody);
@@ -104,7 +105,8 @@ namespace OzonReturnsManager1.Services
                     to = dateTo.ToString("yyyy-MM-dd")
                 },
                 return_state = "Завершено",
-                our_status = ourStatus
+                our_status = ourStatus,
+                org_type = orgType
             };
 
             var json = JsonConvert.SerializeObject(requestBody);
@@ -175,7 +177,7 @@ namespace OzonReturnsManager1.Services
         public string OfferId { get; set; }
 
         [JsonProperty("sku")]
-        public int Sku { get; set; }
+        public long Sku { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
