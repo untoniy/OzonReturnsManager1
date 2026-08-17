@@ -267,6 +267,4 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colQuantity;
     }
 }
-    }
-}
 
